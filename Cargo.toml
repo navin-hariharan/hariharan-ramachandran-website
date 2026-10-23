@@ -1,0 +1,17 @@
+[package]
+name = "hariharan-site"
+version = "4.2.3"
+edition = "2021"
+description = "Personal portfolio of Hariharan Ramachandran, served by Axum and rendered with Maud"
+publish = false
+
+[dependencies]
+axum = "0.7"
+maud = { version = "0.26", features = ["axum"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "signal"] }
+tower-http = { version = "0.5", features = ["fs", "compression-gzip", "set-header"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
